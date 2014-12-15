@@ -1,0 +1,47 @@
+import java.util.Scanner;
+
+/**
+ * Created by Kisil on 15.12.2014.
+ */
+public class Calculator {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        while (true) {
+            System.out.println("To Exit type 'e' + 'Enter'");
+            char operand='a';
+            double a=0;
+            double b=0;
+            String s = scanner.nextLine();
+            if ("e".equals(s)) {
+                break;
+            } else if ("".equals(s)) {
+                break;
+            }
+                for (int i = 1; i < s.length(); i++) {
+                    if (!s.substring(i, i+1).matches("[0-9]") & !"--".equals(s.substring(i, i+1)) & !".".equals(s.substring(i, i+1))) {
+                        operand = s.charAt(i);
+                        a = Double.parseDouble(s.substring(0, i));
+                        b = Double.parseDouble(s.substring(i + 1, s.length()));
+                        break;
+                    }
+                }
+            switch (operand) {
+                case '/':
+                    System.out.println("Result: " + (a / b));
+                    break;
+                case '*':
+                    System.out.println("Result: " + (a * b));
+                    break;
+                case '+':
+                    System.out.println("Result: " + (a + b));
+                    break;
+                case '-':
+                    System.out.println("Result: " + (a - b));
+                    break;
+                default:
+                    System.out.println("Sorry, I don't know how to do that");
+                    break;
+            }
+        }
+    }
+}
